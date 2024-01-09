@@ -248,7 +248,7 @@ export default class PQueue<QueueType extends Queue<RunFunction, EnqueueOptionsT
 				try {
 					options.signal?.throwIfAborted();
 
-					let operation = function_({signal: options.signal, slot: options.slot});
+					let operation = function_(options);
 
 					if (options.timeout) {
 						operation = pTimeout(Promise.resolve(operation), {milliseconds: options.timeout});
